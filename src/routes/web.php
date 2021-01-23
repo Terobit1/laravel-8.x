@@ -21,9 +21,9 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/auth','SessionsController.php@getSignin', function () {
-    return view('auth.signin');
-});
-Route::post('/auth','SessionsController@postSignin', function () {
-    return view('auth.signin');
+Route::get('/auth', [SessionsController::class, 'getSignin'], function () {
+    // return view('auth.signin');
+})->name('auth.signin');;
+Route::post('/auth', [SessionsController::class, 'postSignin'], function () {
+    
 });

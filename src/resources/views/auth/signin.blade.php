@@ -6,6 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
+        
         <title>Material Design for Bootstrap</title>
         <!-- MDB icon -->
         <link rel="icon" href="resources/img/mdb-favicon.ico" type="image/x-icon">
@@ -26,35 +27,32 @@
     <body >
     <div style="margin-top: 10%; margin-left: auto; margin-right: auto; width:450px;  " class="border p-4 d-flex text-center justify-content-center mb-5 flex-center align-items-center ">
     
-            <form method='POST' action="{{ route('auth.signin') }} >
+    <!-- /signin -->
+            <form method='POST' action="{{route('auth.signinphp artisan route:clear')}}" novalidate  >
+            @csrf
+            
             <!-- Email input -->
             <label style="margin-bottom: 24px;" class="form-check-label" for="form2Example3"> Login </label>
             <div class="form-outline mb-4">
                 <input type="email"
                  id="email"
+                 name="email"
                  class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                  placeholder="Email address" 
                  value="{{ Request::old('email') ? : '' }}"
                  />
-                 @if($errors->has(email))
-                    <span class="help-block text-damager">
-                    {{$errors->first('email')}}
-                    </span>
-                 @endif
+                 
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
                 <input type="password"
                        id="password"
+                       name="password"
                        class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                        placeholder="Password"
                        />
-                       @if($errors->has(password))
-                            <span class="help-block text-damager">
-                            {{$errors->first('password')}}
-                            </span>
-                       @endif 
+                      
             </div>
     
             <!-- 2 column grid layout for inline styling -->
