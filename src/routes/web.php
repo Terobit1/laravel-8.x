@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SessionsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +21,9 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/auth', function () {
-    return view('auth');
+Route::get('/auth','SessionsController.php@getSignin', function () {
+    return view('auth.signin');
+});
+Route::post('/auth','SessionsController@postSignin', function () {
+    return view('auth.signin');
 });

@@ -26,18 +26,35 @@
     <body >
     <div style="margin-top: 10%; margin-left: auto; margin-right: auto; width:450px;  " class="border p-4 d-flex text-center justify-content-center mb-5 flex-center align-items-center ">
     
-            <form >
+            <form method='POST' action="{{ route('auth.signin') }} >
             <!-- Email input -->
             <label style="margin-bottom: 24px;" class="form-check-label" for="form2Example3"> Login </label>
             <div class="form-outline mb-4">
-                <input type="email" id="form2Example1" class="form-control" placeholder="Email address" />
-                
+                <input type="email"
+                 id="email"
+                 class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                 placeholder="Email address" 
+                 value="{{ Request::old('email') ? : '' }}"
+                 />
+                 @if($errors->has(email))
+                    <span class="help-block text-damager">
+                    {{$errors->first('email')}}
+                    </span>
+                 @endif
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
-                <input type="password" id="form2Example2" class="form-control" placeholder="Password"/>
-                
+                <input type="password"
+                       id="password"
+                       class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                       placeholder="Password"
+                       />
+                       @if($errors->has(password))
+                            <span class="help-block text-damager">
+                            {{$errors->first('password')}}
+                            </span>
+                       @endif 
             </div>
     
             <!-- 2 column grid layout for inline styling -->
@@ -46,10 +63,11 @@
                 <!-- Checkbox -->
                 <div class="form-check" style="margin-top: 9px;">
                     <input
+                    name="remember"
                     class="form-check-input"
                     type="checkbox"
                     value=""
-                    id="form2Example3"
+                    id="remember"
                     checked
                     />
                     <label class="form-check-label" for="form2Example3"> Remember me </label>
