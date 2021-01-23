@@ -28,7 +28,7 @@
     <div style="margin-top: 10%; margin-left: auto; margin-right: auto; width:450px;  " class="border p-4 d-flex text-center justify-content-center mb-5 flex-center align-items-center ">
     
     <!-- /signin -->
-            <form method='POST' action="{{route('auth.signinphp artisan route:clear')}}" novalidate  >
+            <form method='POST' action="{{route('auth.signin')}}" novalidate  >
             @csrf
             
             <!-- Email input -->
