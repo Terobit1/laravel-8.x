@@ -12,6 +12,7 @@ services:
     ports:
       - 8080:80
     volumes:
+      - ./mysql:/var/lib/mysql
       - ./src:/var/www/html:delegated
     depends_on:
       - php
