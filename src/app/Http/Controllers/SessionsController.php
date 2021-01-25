@@ -4,31 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SessionsController extends Controller
 {   
     public function getSignup()
     {
-        return view('auth.signin');
+        return view('auth.signup');
     }
     
-    public function postSignup()
+    public function postSignup(Request $request)
     {
-        // $this->validate($request,[
-        //     'email' => 'required|unique:users|email|max:255'
-        //     'name' => 'required|unique:users|alpha_dash|max:20'
-        //     'password' => 'required|min:6'
-        // ]);
+        $this->validate($request,[
+            'email' => 'required|unique:users|email|max:255',
+            'name' => 'required|unique:users|alpha_dash|max:20',
+            'password' => 'required|min:6',
+        ]);
         
-        // User::create([
-        //     'email' => $request ->input('email'),
-        //     'name' => $request ->input('username'),
-        //     'password' => bcrypt($request ->input('password')),
-        // ])
+        User::create([
+            'email' => $request ->input('email'),
+            'name' => $request ->input('name'),
+            'password' => bcrypt($request ->input('password')),
+        ]);
         
-        // return redirect()
-        //         ->route("home")
-        //         ->route("info","Ви успішно зарегіструвались")
+        return redirect()->route("home");
     }
 
     public function getSignin()
@@ -38,6 +37,23 @@ class SessionsController extends Controller
 
     public function postSignin(Request $request)
     {
-       dd("ok");
+        $this->validate($request,[
+            'email' => 'required|max:255',
+            'password' => 'required|min:6',
+        ]);
+       
+       if(!Auth::attempt($request->only(['email','password']),$request->has('remember') ))
+       {
+        return redirect()->back();
+          
+       }
+
+    return redirect()->route('home');
+    
+    }
+    public function getOut(){
+        Auth::logout();
+        
+        return redirect()->route("home");
     }
 }

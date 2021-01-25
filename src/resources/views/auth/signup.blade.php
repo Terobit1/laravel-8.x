@@ -28,11 +28,11 @@
     <div style="margin-top: 10%; margin-left: auto; margin-right: auto; width:450px;  " class="border p-4 d-flex text-center justify-content-center mb-5 flex-center align-items-center ">
     
     <!-- /signin -->
-            <form method='POST' action="{{route('auth.signin')}}" novalidate  >
+            <form method='POST' action="{{route('auth.signup')}}" novalidate  >
             @csrf
             
             <!-- Email input -->
-            <label style="margin-bottom: 24px;" class="form-check-label" for="form2Example3"> Login </label>
+            <label style="margin-bottom: 24px;" class="form-check-label" for="form2Example3"> Register </label>
             <div class="form-outline mb-4">
                 <input type="email"
                  id="email"
@@ -42,6 +42,22 @@
                  value="{{ old('email') }}"
                  />
                  @error('email')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                 @enderror
+            </div>
+
+       
+            <div class="form-outline mb-4">
+                <input type="name"
+                 id="name"
+                 name="name"
+                 class="form-control @error('name') is-invalid @enderror "
+                 placeholder="name" 
+                 value="{{ old('name') }}"
+                 />
+                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
@@ -82,7 +98,7 @@
 
                 <div class="col">
                  <!-- Submit button -->
-                <button type="submit" class="btn btn-dark btn-block ">Sign in</button>
+                <button type="submit" class="btn btn-dark btn-block ">Sign up</button>
                 </div>
             </div>
 

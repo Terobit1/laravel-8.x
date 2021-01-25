@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,17 +14,23 @@ use App\Http\Controllers\SessionsController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/',[HomeController::class, 'index'])->name('home');
 
 Route::get('/auth', [SessionsController::class, 'getSignin'], function () {
     // return view('auth.signin');
-})->name('auth.signin');;
+  
+})->name('auth.signin');
+
 Route::post('/auth', [SessionsController::class, 'postSignin'], function () {
     
 });
+
+Route::get('/reg', [SessionsController::class, 'getSignup'])->name('auth.signup');
+
+Route::post('/reg', [SessionsController::class, 'postSignup']);
+
+Route::get('/getOut', [SessionsController::class, 'getOut'])->name('auth.getOut');
