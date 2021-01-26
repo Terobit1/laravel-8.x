@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        
+         <script src="https://www.google.com/recaptcha/api.js"></script>
         <title>Material Design for Bootstrap</title>
         <!-- MDB icon -->
         <link rel="icon" href="resources/img/mdb-favicon.ico" type="image/x-icon">
@@ -108,15 +108,16 @@
             <!-- Register buttons -->
             <div class="text-center  " >
                 
-                <button type="button" class="btn btn-primary " style="margin-left: auto; margin-right: auto; width:100%;">
-                <i class="fab fa-facebook-f"> Sign in facebook</i>
-                </button>
+            <a href="{{ route('login.facebook') }}" class="btn btn-lg btn-block kpx_btn-facebook" data-toggle="tooltip" data-placement="top" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+                 <span class="hidden-xs"></span>
+                </a>
+                
 
-                <button type="button" class="btn btn-info " style="margin-left: auto; margin-right: auto; width:100%;">
-                <i class="fab fa-google"> Sign in Google</i>
-                </button>
-
-                </button>
+                <a href="{{ route('login.google') }}" class="btn btn-lg btn-block kpx_btn-google-plus" data-toggle="tooltip" data-placement="top" title="Google Plus">
+              <i class="fab fa-google"></i>
+              <span class="hidden-xs"></span>
+            </a>
             </div>
             </form>
     </div>
@@ -132,5 +133,5 @@
   <script type="text/javascript" src="../js/mdb.min.js"></script>
   <!-- Your custom scripts (optional) -->
   <script type="text/javascript"></script>
-
+  <script src="https://www.google.com/recaptcha/api.js"></script>  
 </html>

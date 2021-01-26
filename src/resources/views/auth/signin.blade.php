@@ -79,7 +79,13 @@
                     <label class="form-check-label" id="remember" name="remember" for="form2Example3"> Remember me </label>
                 </div>
                 </div>
-
+                <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}">
+                @if ($errors->has('g-recaptcha-response'))
+                    <span class="invalid-feedback" style="display:block">
+                    <strong>{{$errors->first('g-recaptcha-response')}}</strong>
+                    </span>
+                @endif
+                </div>
                 <div class="col">
                  <!-- Submit button -->
                 <button type="submit" class="btn btn-dark btn-block ">Sign in</button>
@@ -92,15 +98,17 @@
             <!-- Register buttons -->
             <div class="text-center  " >
                 
-                <button type="button" class="btn btn-primary " style="margin-left: auto; margin-right: auto; width:100%;">
-                <i class="fab fa-facebook-f"> Sign in facebook</i>
-                </button>
+                
+                <a href="{{ route('login.facebook') }}" class="btn btn-lg btn-block kpx_btn-facebook" data-toggle="tooltip" data-placement="top" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+                 <span class="hidden-xs"></span>
+                </a>
+                
 
-                <button type="button" class="btn btn-info " style="margin-left: auto; margin-right: auto; width:100%;">
-                <i class="fab fa-google"> Sign in Google</i>
-                </button>
-
-                </button>
+                <a href="{{ route('login.google') }}" class="btn btn-lg btn-block kpx_btn-google-plus" data-toggle="tooltip" data-placement="top" title="Google Plus">
+              <i class="fab fa-google"></i>
+              <span class="hidden-xs"></span>
+            </a>
             </div>
             </form>
     </div>
@@ -116,5 +124,5 @@
   <script type="text/javascript" src="../js/mdb.min.js"></script>
   <!-- Your custom scripts (optional) -->
   <script type="text/javascript"></script>
-
+  <script src="https://www.google.com/recaptcha/api.js"></script>  
 </html>

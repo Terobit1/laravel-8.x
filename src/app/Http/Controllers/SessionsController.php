@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class SessionsController extends Controller
 {   
@@ -56,4 +57,42 @@ class SessionsController extends Controller
         
         return redirect()->route("home");
     }
+
+    public function redirectToGoogle(){
+
+        return Socialite::driver('google')->redirect();
+
+    }
+    public function handleGoogleCallback(){
+
+        $user = Socialite::driver('google')->user();
+        $this->_registerOrLoginUser($user);
+        return redirect()->route("home");
+    }
+
+    public function redirectToFaceBook(){
+
+        return Socialite::driver('facebook')->redirect();
+
+    }
+    public function handleFaceBookCallback(){
+
+        $user = Socialite::driver('facebook')->user();
+        $this->_registerOrLoginUser($user);
+        return redirect()->route("home");
+    }
+
+    protected function _registerOrLoginUser($data){
+
+        $user = User::where('email','=',$data->email)->first();
+        if(!$user){
+            $user = new User();
+            $user->name = $data->name;
+            $user->email = $data->email;
+            $user->provider_id = $data->id;
+            $user->save();
+        }
+        Auth::login($user);
+    }
+
 }
