@@ -141,7 +141,7 @@
     <script type="text/javascript">
       var onloadCallback = function() {
         grecaptcha.render('html_element', {
-          'sitekey' : 'asda'
+          'sitekey' : '{{env('CAPTCHA_KEY')}}'
         });
       };
     </script>
@@ -157,6 +157,8 @@
   <!-- Your custom scripts (optional) -->
   <script type="text/javascript"></script>
   
-
+  <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer>
+</script>
 
 </html>
