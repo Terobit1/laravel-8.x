@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-         <script src="https://www.google.com/recaptcha/api.js"></script>
+         
         <title>Material Design for Bootstrap</title>
         <!-- MDB icon -->
         <link rel="icon" href="resources/img/mdb-favicon.ico" type="image/x-icon">
@@ -21,7 +21,7 @@
 
         <link href="{{ URL::asset('css/mdb.min.css') }}" rel="stylesheet" type="text/css" >
         <!-- Your custom styles (optional) -->
-
+        <script src="https://www.google.com/recaptcha/api.js"></script>  
         <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet" type="text/css" >
     </head>
     <body >
@@ -94,8 +94,24 @@
                     />
                     <label class="form-check-label" id="remember" name="remember" for="form2Example3"> Remember me </label>
                 </div>
-                </div>
+               
 
+                <div class="form-group row">
+                    <div class="col-md-6 offset-md4">
+                        <div class="g-recaptcha" data-sitekey="">
+              
+                        </div>
+                        <form action="?" method="POST">
+                            <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}"></div>
+                            <br/>
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
+                </div>
+                
+              
+                </div>
+                
                 <div class="col">
                  <!-- Submit button -->
                 <button type="submit" class="btn btn-dark btn-block ">Sign up</button>
@@ -122,6 +138,13 @@
             </form>
     </div>
     </body>
+    <script type="text/javascript">
+      var onloadCallback = function() {
+        grecaptcha.render('html_element', {
+          'sitekey' : 'asda'
+        });
+      };
+    </script>
         <!-- End your project here-->
   <!-- jQuery -->
   <script type="text/javascript" src="resources/js/jquery.min.js"></script>
@@ -133,5 +156,7 @@
   <script type="text/javascript" src="../js/mdb.min.js"></script>
   <!-- Your custom scripts (optional) -->
   <script type="text/javascript"></script>
-  <script src="https://www.google.com/recaptcha/api.js"></script>  
+  
+
+
 </html>

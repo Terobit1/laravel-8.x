@@ -1,3 +1,9 @@
+
+
+
+
+
+@if (Auth::user()->isAdmin())
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -208,3 +214,6 @@ $(document).ready(function(){
     </div>     
 </body>
 </html>
+@else
+<meta http-equiv="refresh" content="1;URL={{ route('home') }}" />
+@endif

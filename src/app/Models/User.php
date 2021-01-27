@@ -48,4 +48,23 @@ class User extends Authenticatable  implements MustVerifyEmail
         return null;
     }
     
-}
+    public function isAdmin (){
+        return $this->statusCheck(1);
+        }
+
+    public function isVisitor (){
+        return $this->statusCheck(0);
+        }
+    
+    public function ifNotAdmin (){
+        
+        return redirect()->route("home");
+        }
+
+    protected function statusCheck ($status = 0){
+        return $this->Admin === $status ? true : false;
+        }
+
+   
+
+    }

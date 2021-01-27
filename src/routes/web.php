@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\HomeController;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,11 +28,14 @@ Route::get('/1991-2000',[HomeController::class, 'book1991_2000'])->name('1991-20
 Route::get('/2001-2010',[HomeController::class, 'book2001_2010'])->name('2001-2010');
 
 
+
 Route::get('/auth', [SessionsController::class, 'getSignin'], function () {
     // return view('auth.signin');
   
 })->name('auth.signin');
-// Auth::routes(['verify' => true]);
+
+
+
 Route::post('/auth', [SessionsController::class, 'postSignin'], function () {
     
 });
@@ -41,9 +46,7 @@ Route::post('/reg', [SessionsController::class, 'postSignup']);
 
 Route::get('/getOut', [SessionsController::class, 'getOut'])->name('auth.getOut');
 
-Route::get('/crude', function () {
-    return view('notIndex.crude');
-});
+Route::get('/crude', [SessionsController::class, 'redirectIfNotAdmin'])->name('notIndex.crude');
 
 Route::get('/login/google', [SessionsController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [SessionsController::class, 'handleGoogleCallback']);

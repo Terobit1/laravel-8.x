@@ -79,13 +79,7 @@
                     <label class="form-check-label" id="remember" name="remember" for="form2Example3"> Remember me </label>
                 </div>
                 </div>
-                <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}">
-                @if ($errors->has('g-recaptcha-response'))
-                    <span class="invalid-feedback" style="display:block">
-                    <strong>{{$errors->first('g-recaptcha-response')}}</strong>
-                    </span>
-                @endif
-                </div>
+               
                 <div class="col">
                  <!-- Submit button -->
                 <button type="submit" class="btn btn-dark btn-block ">Sign in</button>

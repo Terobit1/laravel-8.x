@@ -50,11 +50,15 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
             <a class="dropdown-item" href="#">Action</a>
+
             <a class="dropdown-item" href="#">Another action</a>
+            @if (Auth::user()->isAdmin())
+            <a class="dropdown-item" href="{{ route('notIndex.crude') }}">База данних</a>
+            @endif
             <a class="dropdown-item" href="{{ route('auth.getOut') }}">Вийти</a>
           </div>
         </div>
-        @else
+    @else
   
                   <div class="container-fluid">
                   <ol class="breadcrumb">
@@ -63,7 +67,7 @@
                     </ol>
                   </div>
                   
-      @endif
+    @endif
       </form>
   </div>
 </nav>

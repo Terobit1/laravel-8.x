@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
-
+use App\Rules\Captcha;
 class SessionsController extends Controller
 {   
     public function getSignup()
@@ -20,6 +20,7 @@ class SessionsController extends Controller
             'email' => 'required|unique:users|email|max:255',
             'name' => 'required|unique:users|alpha_dash|max:20',
             'password' => 'required|min:6',
+            'g-recaptcha-response' => new Captcha,
         ]);
         
         User::create([
@@ -94,5 +95,17 @@ class SessionsController extends Controller
         }
         Auth::login($user);
     }
-
+    
+    public function redirectIfNotAdmin(){
+        
+        
+        if (!auth()->check()) {
+            return redirect()->route("home");
+        }
+        
+        
+        return view('notIndex.crude');
+    }
+    
+    
 }
