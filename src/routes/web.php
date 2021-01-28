@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CrudeController;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,10 +49,15 @@ Route::post('/reg', [SessionsController::class, 'postSignup']);
 
 Route::get('/getOut', [SessionsController::class, 'getOut'])->name('auth.getOut');
 
-Route::get('/crude', [SessionsController::class, 'redirectIfNotAdmin'])->name('notIndex.crude');
+
+Route::resource('/crude', CrudeController::class);
+
+Route::resource('posts', PostController::class);
+Route::resource('users', UserController::class);
 
 Route::get('/login/google', [SessionsController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [SessionsController::class, 'handleGoogleCallback']);
 
 Route::get('/login/facebook', [SessionsController::class, 'redirectToFaceBook'])->name('login.facebook');
 Route::get('/login/facebook/callback', [SessionsController::class, 'handleFaceBookCallback']);
+

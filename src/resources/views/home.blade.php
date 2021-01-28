@@ -12,7 +12,7 @@
             <div class="" style="max-width: 400px;" >
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg" alt="..." class="img-fluid">
+              <img src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg" alt="..." class="img-fluid mw-100">
             </div>
             <div class="col-md-8">
               <div class="card-body">

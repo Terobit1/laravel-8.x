@@ -20,7 +20,7 @@ class SessionsController extends Controller
             'email' => 'required|unique:users|email|max:255',
             'name' => 'required|unique:users|alpha_dash|max:20',
             'password' => 'required|min:6',
-            'g-recaptcha-response' => new Captcha,
+            // 'g-recaptcha-response' => new Captcha,
         ]);
         
         User::create([

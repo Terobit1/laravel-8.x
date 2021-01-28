@@ -96,7 +96,7 @@
                 </div>
                
 
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                     <div class="col-md-6 offset-md4">
                         <div class="g-recaptcha" data-sitekey="">
               
@@ -107,7 +107,7 @@
                             <input type="submit" value="Submit">
                         </form>
                     </div>
-                </div>
+                </div> -->
                 
               
                 </div>
@@ -139,11 +139,7 @@
     </div>
     </body>
     <script type="text/javascript">
-      var onloadCallback = function() {
-        grecaptcha.render('html_element', {
-          'sitekey' : '{{env('CAPTCHA_KEY')}}'
-        });
-      };
+     
     </script>
         <!-- End your project here-->
   <!-- jQuery -->
