@@ -11,11 +11,11 @@
   <!-- Google Fonts Roboto -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   <!-- Material Design Bootstrap -->
-  <link rel="stylesheet" href="css/mdb.min.css">
+  <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
   <!-- Your custom styles (optional) -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>@yield('title')</title>
@@ -23,7 +23,7 @@
 <body>
   
 <nav class="navbar navbar-expand-lg navbar-light bg-light w-auto p-3">
-  <a class="navbar-brand" href="{{ route('home') }}">MyBook.com</a>
+  <a class="navbar-brand" href="{{ URL::to('/search') }}">MyBook.com</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -32,6 +32,7 @@
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
     <div class="container-fluid">
     <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
         <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
         <li class="breadcrumb-item"><a href="{{ route('posts.index') }}">Product</a></li>
         

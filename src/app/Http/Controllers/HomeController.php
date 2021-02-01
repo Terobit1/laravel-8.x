@@ -43,4 +43,11 @@ class HomeController extends Controller
         
         return view('home',['data' => $product -> where('category_id','<=','2010') -> where('category_id','>=','2001')->get()]);
     }
+    public function search(){
+        $product = new Product;
+        $search_text = $_GET['search'];
+        dd($search_text);
+        return view('home',['data' => $product -> where('description', 'like', '%'.$search_text.'%')->get()]);
+
+    }
 }

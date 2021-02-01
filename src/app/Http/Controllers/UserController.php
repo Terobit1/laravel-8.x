@@ -142,7 +142,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect('/users')->with('success', 'Пост удален!');
+        return redirect('/users')->with('success', 'Пост видалений!');
     }
     
 }

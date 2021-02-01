@@ -1,7 +1,7 @@
 @section('aside')
 <div class="d-flex "  >
-  <div class="p-2 border " style=' height: 900px; padding: 10px;'>
-    <h4 style='padding: 24px;'>Рік видання</h4>
+  <div class="p-2 border " style=' height: 700px; max-width:200px; padding: 10px;'>
+ <h4 style='padding: 24px;'>Рік видання</h4>
     <div style=' padding-bottom: 24px; margin:auto; margin-bottom:10px;'>
           <form action="{{ route('home') }}" method="get">
           <button type="submit" class="btn btn-dark btn-block ">All</button>

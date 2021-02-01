@@ -50,6 +50,12 @@ class User extends Authenticatable  implements MustVerifyEmail
         }
         return null;
     }
+    public function getId(){
+        if($this->id){
+            return "{$this->id}";
+        }
+        return null;
+    }
     
     public function isAdmin (){
         return $this->statusCheck(1);

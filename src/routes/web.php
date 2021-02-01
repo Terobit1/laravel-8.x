@@ -3,12 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CrudeController;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,9 +48,10 @@ Route::get('/reg', [SessionsController::class, 'getSignup'])->name('auth.signup'
 Route::post('/reg', [SessionsController::class, 'postSignup']);
 
 Route::get('/getOut', [SessionsController::class, 'getOut'])->name('auth.getOut');
+Route::get('/search', [HomeController::class, 'search'])->name('Search');
 
-
-Route::resource('/crude', CrudeController::class);
+Route::get('/cart', [CartController::class, 'Cart'])->name('posts.cart');
+Route::post('/cart/add/{id}',[CartController::class, 'CartAdd'])->name('cartAdd');
 
 Route::resource('posts', PostController::class);
 Route::resource('users', UserController::class);
