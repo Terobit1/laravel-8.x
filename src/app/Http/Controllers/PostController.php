@@ -67,7 +67,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect('/posts')->with('success', 'Пост успешно добавлен!');
+        return redirect('/posts')->with('success', 'Пост успішно добавлений!');
     }
 
     /**
@@ -129,7 +129,7 @@ class PostController extends Controller
         $post->image =  $request->get('image');
         $post->save();
 
-        return redirect('/posts')->with('success', 'Пост успешно отредактирован!');
+        return redirect('/posts')->with('success', 'Пост успісшо відредагований!');
     }
 
     /**
@@ -143,7 +143,7 @@ class PostController extends Controller
         $post = Product::find($id);
         $post->delete();
 
-        return redirect('/posts')->with('success', 'Пост удален!');
+        return redirect('/posts')->with('success', 'Пост видалений!');
     }
     
 }

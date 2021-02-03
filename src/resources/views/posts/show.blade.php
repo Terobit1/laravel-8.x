@@ -1,5 +1,4 @@
-@extends('index.header2')
-@section('title')Пост@endsection
+@extends('posts.app')
 
 @section('title', $post->title)
 

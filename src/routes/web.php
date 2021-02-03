@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\HomeController;
-use Laravel\Socialite\Facades\Socialite;
-use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+// use Laravel\Socialite\Facades\Socialite;
+// use Illuminate\Http\Request;
+// use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
@@ -34,17 +34,10 @@ Route::get('/2001-2010',[HomeController::class, 'book2001_2010'])->name('2001-20
 
 Route::get('/auth', [SessionsController::class, 'getSignin'], function () {
     // return view('auth.signin');
-  
 })->name('auth.signin');
-
-
-
-Route::post('/auth', [SessionsController::class, 'postSignin'], function () {
-    
-});
+Route::post('/auth', [SessionsController::class, 'postSignin'], function () {});
 
 Route::get('/reg', [SessionsController::class, 'getSignup'])->name('auth.signup');
-
 Route::post('/reg', [SessionsController::class, 'postSignup']);
 
 Route::get('/getOut', [SessionsController::class, 'getOut'])->name('auth.getOut');
